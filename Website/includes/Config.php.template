@@ -1,0 +1,29 @@
+<?php
+
+/* Config.php */
+
+/* Include file constants */
+define ("WEB_SERVICES",    INCLUDES . "WebServices/");
+define ("EXCEPTIONS",      INCLUDES . "Exceptions/");
+define ("DATA_CONTRACTS",  INCLUDES . "DataContracts/");
+define ("TEMPLATES",       INCLUDES . "Templates/");
+define ("VIEW_MODELS",     INCLUDES . "ViewModels/");
+define ("MUSTACHE",        INCLUDES . "Mustache.php");
+define ("TEMPLATE_ENGINE", INCLUDES . "Template.php");
+
+/* Require common classes */
+require_once (INCLUDES . 'Request.php');
+require_once (EXCEPTIONS . 'SystemException.php');
+
+/* Configuration class */
+
+class Config {
+	
+	public $dbHost = "";
+	public $dbUser = "";
+	public $dbPassword = "";
+	public $dbDatabase = "";	
+	public $tablePrefix = "tempmon_";
+}
+
+?>

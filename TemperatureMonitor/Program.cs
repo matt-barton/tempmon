@@ -2,7 +2,6 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using MattBarton.NETMF.Utilities;
 using Microsoft.SPOT;
 using Microsoft.SPOT.Hardware;
 using SecretLabs.NETMF.Hardware;
@@ -15,8 +14,7 @@ namespace TemperatureMonitor
 		public static void Main()
 		{
 			// write your code here
-			var test =  new HttpClient();
-
+			//var test =  new HttpClient();
 		}
 
 	}

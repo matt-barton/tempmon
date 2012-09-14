@@ -41,10 +41,4 @@
     <Reference Include="SecretLabs.NETMF.Hardware.NetduinoPlus" />
     <Reference Include="System" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\NETMF.Utilities\MattBarton.NETMF.Utilities\MattBarton.NETMF.Utilities.csproj">
-      <Project>{485FC2AB-2C27-4E7B-B1C4-0015D5D340A0}</Project>
-      <Name>MattBarton.NETMF.Utilities</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>

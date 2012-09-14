@@ -1,0 +1,16 @@
+<script src="{{root}}/scripts/MonitorSummary/MonitorSummaryController.js" type="text/javascript"></script>
+<script src="{{root}}/scripts/MonitorSummary/MonitorSummaryDataLoader.js" type="text/javascript"></script>
+<script src="{{root}}/scripts/MonitorSummary/MonitorSummaryView.js" type="text/javascript"></script>
+
+<script src="{{root}}/scripts/Tools/Browser.Http.js" type="text/javascript"></script>
+<script src="{{root}}/scripts/Tools/Json.js" type="text/javascript"></script>
+<script src="{{root}}/scripts/Tools/JsonDataLoader.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var view = new MonitorSummaryView($(document.body));
+        var dataLoader = new MonitorSummaryDataLoader();
+        var controller = new MonitorSummaryController(dataLoader, view);
+        controller.init();
+    });
+</script> 

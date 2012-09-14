@@ -1,0 +1,7 @@
+Config.php
+php.ini
+.httpd.conf
+*.puo
+*.suo
+obj
+Debug

@@ -1,0 +1,306 @@
+"General"
+{
+"ProjectType" = "local"
+"AutoLoadTemplate" = "%s.php;class.%s.php;"
+"IncludeDirs" = ""
+}
+"Configurations"
+{
+    "Local|PHP 5.2"
+    {
+    }
+    "Staging|PHP 5.2"
+    {
+    }
+    "Production|PHP 5.2"
+    {
+    }
+}
+"Files"
+{
+    "database"
+    {
+    "ProjRelPath" = "T"
+    }
+    "database\\tempmon.sql"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\Configuration.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\ui-bg_flat_0_aaaaaa_40x100.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\ui-bg_flat_75_ffffff_40x100.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\ui-bg_glass_55_fbf9ee_1x400.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\ui-bg_glass_65_ffffff_1x400.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\ui-bg_glass_75_dadada_1x400.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\ui-bg_glass_75_e6e6e6_1x400.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\ui-bg_glass_95_fef1ec_1x400.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\ui-bg_highlight-soft_75_cccccc_1x100.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\ui-icons_222222_256x240.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\ui-icons_2e83ff_256x240.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\ui-icons_454545_256x240.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\ui-icons_888888_256x240.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\ui-icons_cd0a0a_256x240.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\jquery-ui-1.8.23.custom.css"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\index.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\phpinfo.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\jQuery"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\jQuery\\jquery-1.8.1.js"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\jQuery\\jquery-1.8.1.min.js"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\jQuery\\jquery-ui-1.8.23.custom.min.js"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\MonitorSummary"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\MonitorSummary\\MonitorSummaryController.js"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\MonitorSummary\\MonitorSummaryDataLoader.js"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\MonitorSummary\\MonitorSummaryView.js"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\WebServices"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\WebServices\\MeasurementWebService.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Config.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Config.php.template"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\DatabaseService.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\DataContracts"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\DataContracts\\Measurement.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\DataContracts\\Monitor.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Exceptions"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Exceptions\\DatabaseException.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Exceptions\\SystemException.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\MonitorService.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache\\Autoloader.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache\\Compiler.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache\\Context.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache\\Engine.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache\\HelperCollection.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache\\Loader"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache\\Loader.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache\\Loader\\ArrayLoader.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache\\Loader\\FilesystemLoader.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache\\Loader\\MutableLoader.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache\\Loader\\StringLoader.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache\\Parser.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache\\Template.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Mustache\\Tokenizer.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Request.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\Template.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\templates"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\templates\\MonitorSummaryPage.html"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\templates\\SiteMaster.html"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\WebServices"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\WebServices\\JsonWebService.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\WebServices\\MeasurementJsonService.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "index.php"
+    {
+    "ProjRelPath" = "T"
+    }
+}
+"ProjStartupServices"
+{
+}
+"Globals"
+{
+}
+"References"
+{
+}
