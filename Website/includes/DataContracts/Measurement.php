@@ -24,12 +24,12 @@ class Measurement
 		return $this->_time;
 	}
 
-	public function GetCelsius ($celsius)
+	public function GetCelsius ()
 	{
 		return $this->_celsius;
 	}
 
-	public function GetFarenheit ($farenheit)
+	public function GetFarenheit ()
 	{
 		return $this->_farenheit;
 	}

@@ -278,6 +278,22 @@
     {
     "ProjRelPath" = "T"
     }
+    "includes\\ViewModels"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\ViewModels\\MeasurementViewModel.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\ViewModels\\MonitorSummaryViewModel.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\ViewModels\\MonitorViewModel.php"
+    {
+    "ProjRelPath" = "T"
+    }
     "includes\\WebServices"
     {
     "ProjRelPath" = "T"
@@ -287,6 +303,10 @@
     "ProjRelPath" = "T"
     }
     "includes\\WebServices\\MeasurementJsonService.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\WebServices\\MonitorJsonService.php"
     {
     "ProjRelPath" = "T"
     }

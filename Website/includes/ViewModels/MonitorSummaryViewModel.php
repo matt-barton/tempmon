@@ -7,12 +7,14 @@ class MonitorSummaryViewModel
 	public $UnidentifiedMonitor = false;
 	public $Monitors = array();
 	
-	public function __construct($unidentifiedMonitor, $monitors)
+	public function __construct($monitors)
 	{
-		$this->UnidentifiedMonitor = $unidentifiedMonitor;
 		foreach ($monitors as $monitor)
 		{
 			$this->Monitors[] = new MonitorViewModel($monitor);
+			if (String::IsNullOrEmpty($monitor->GetLocation())) {
+				$this->UnidentifiedMonitor = true;
+			}
 		}
 	}		
 }

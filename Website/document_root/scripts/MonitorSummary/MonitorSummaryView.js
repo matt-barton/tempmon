@@ -5,15 +5,17 @@ function MonitorSummaryView (context) {
     }
 
     function displayError(error) {
-
+        alert(error);
     }
 
     function displayMonitor(monitor) {
-
+        // get html template
+        // display in monitor placeholder
     }
 
     function displayUnidentifiedMonitorWarning() {
-
+        // get html template
+        // display
     }
 
     return {
