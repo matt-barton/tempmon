@@ -22,11 +22,6 @@ class Request
 		return ini_get('magic_quotes_gpc')
 			? trim($data) : addslashes(trim($data));
 	}
-
-	public static function IsNullOrEmpty($data)
-	{
-		return (trim($data) === "" or $data === null);
-	}
 }
 
 ?>

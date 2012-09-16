@@ -71,6 +71,7 @@ class MonitorService {
 		try
 		{
 			$this->db->query(Monitor::FindAllWithCurrentReading());
+
 			while ($row = $this->db->GetRow())
 			{
 				$measurement = new Measurement(
@@ -93,7 +94,6 @@ class MonitorService {
 		}
 		catch(exception $ex)
 		{
-			error_log (print_r($ex));
 			return false;
 		}
 		

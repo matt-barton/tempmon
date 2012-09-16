@@ -32,7 +32,7 @@ class MonitorJsonService extends JsonWebService {
 		
 		$monitors = $monitorService->GetAllWithCurrentMeasurement();
 		
-		$this->SetOutput(new MonitorSummaryViewModel(false, $monitors));
+		$this->SetOutput(new MonitorSummaryViewModel($monitors));
 	}
 }
 

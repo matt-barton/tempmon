@@ -10,10 +10,12 @@ class MonitorViewModel
 	
 	public function __construct($monitor)
 	{
+//		error_log(print_r($monitor));
 		$this->MonitorId = $monitor->GetId();
 		$this->Location = $monitor->GetLocation();
 		foreach ($monitor->GetMeasurements() as $index => $measurement)
 		{
+//			error_log(print_r($measurement));
 			$this->Measurements[] = new MeasurementViewModel(
 				$measurement->GetId(),
 				$measurement->GetMonitorId(),

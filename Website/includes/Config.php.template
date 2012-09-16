@@ -13,6 +13,7 @@ define ("TEMPLATE_ENGINE", INCLUDES . "Template.php");
 
 /* Require common classes */
 require_once (INCLUDES . 'Request.php');
+require_once (INCLUDES . 'String.php');
 require_once (EXCEPTIONS . 'SystemException.php');
 
 /* Configuration class */
