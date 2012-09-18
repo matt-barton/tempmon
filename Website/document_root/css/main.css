@@ -1,0 +1,243 @@
+
+/* import fonts */
+@import url("fonts/museo-sans/stylesheet.css");
+
+/* general page styles */
+body
+{
+    background-color: #333;
+    color: #ddd;
+    width: 480px;
+    font-family: museo-sans;
+}
+
+#header 
+{
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    padding-top:15px;
+    padding-bottom: 15px;
+    text-align: center;
+    font-size: 2.3em;
+}
+
+#header #headerText 
+{
+    margin-left: 10px;
+}
+
+/* monitor styles */
+#monitorsTitle 
+{
+    margin-top: 15px;
+    font-size: 1.3em;
+}
+
+.monitorBox 
+{
+    margin-top: 5px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    color: #333;
+}
+
+.monitorBox .menuImage
+{
+    float: right;
+    padding-right: 20px;
+    padding-top: 8px;
+    width: 12px;
+    display: none;
+}
+
+.monitorBox .menuImage img:hover
+{
+    cursor: pointer;
+}
+
+.monitorLocation 
+{
+    padding-top: 5px;
+    margin-left: 10px;
+}
+
+.monitorTemperature 
+{
+    font-size: 2em;
+    padding-bottom: 15px;
+    text-align: center;
+    width: 93%;
+    float: none;
+}
+
+/* popup menu styles */
+ul.popupMenu
+{
+    display: none;
+    position: absolute;
+    width:100px;
+    border-right:1px solid #998675;
+    border-bottom:1px solid #998675;
+    border-left:1px solid #998675;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+ul.popupMenu, li.menuItem, li.menuItemTop, li.menuItemBottom 
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul.popupMenu li.menuItem 
+{
+    background:#333;
+}
+
+ul.popupMenu li.menuItemTop
+{
+    background:#333;
+    -moz-border-radius-topleft: 6px;
+    -moz-border-radius-topright: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+ul.popupMenu li.menuItemBottom
+{
+    background:#333;
+    -moz-border-radius-bottomleft: 6px;
+    -moz-border-radius-bottomright: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+ul.popupMenu a
+{
+    color: #ddd;
+    text-decoration: none;
+    padding: 5px 10px 5px 10px;
+    display: block;
+}
+
+/* temperature related styles */
+.temp-freezing 
+{
+    background-color: #0066ff;
+}
+
+.temp-very-cold
+{
+    background-color: #66a3ff;
+}
+
+.temp-cold
+{
+    background-color: #33cccc;
+}
+
+.temp-cool
+{
+    background-color: #00ff99;
+}
+
+.temp-mild
+{
+    background-color: #99ff99;
+}
+
+.temp-slightly-warm
+{
+    background-color: #ccff66;
+}
+
+.temp-warm
+{
+    background-color: #ccff33;
+}
+
+.temp-quite-hot
+{
+    background-color: #ffff00;
+}
+
+.temp-hot
+{
+    background-color: #ff9933;
+}
+
+.temp-very-hot
+{
+    background-color: #ff3300;
+}
+
+.temp-extremely-hot
+{
+    background-color: #800000;
+}
+
+/* Notification styles */
+.info, .success, .warning, .error, .validation
+{
+    border: 2px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.info a,
+.success a,
+.warning a,
+.error a,
+.validation a
+{
+    color: #333;
+    text-decoration: none;
+}
+
+.info a:hover,
+.success a:hover,
+.warning a:hover,
+.error a:hover,
+.validation a:hover
+{
+    text-decoration: underline;
+}
+
+.info
+{
+    color: #00529B;
+    background-color: #BDE5F8;
+    border-color: #3D81A1;
+    background-image: url('images/info.png');
+}
+
+.success
+{
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    border-color: #7a9d3e;
+    background-image:url('images/success.png');
+}
+
+.warning
+{
+    color: #9F6000;
+    background-color: #FEEFB3;
+    border-color: #a5903a;
+    background-image: url('images/warning.png');
+}
+
+.error
+{
+    color: #D8000C;
+    background-color: #FFBABA;
+    border-color: #A63C3C;
+    background-image: url('images/error.png');
+}
