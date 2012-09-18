@@ -76,9 +76,7 @@ ul.popupMenu
     display: none;
     position: absolute;
     width:100px;
-    border-right:1px solid #998675;
-    border-bottom:1px solid #998675;
-    border-left:1px solid #998675;
+    border:1px solid #ddd;
     -moz-border-radius: 6px;
     border-radius: 6px;
 }

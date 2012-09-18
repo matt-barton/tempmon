@@ -34,15 +34,23 @@
 
 <script id="monitorMenuTemplate", type="text/x-jquery-tmpl">
     <ul class="popupMenu">
-        <li class="menuItem"><a href="#" id="history${id}">History ${id}</a></li>
-        <li class="menuItem"><a href="#" id="details${id}">Details</a></li>
-        <li class="menuItem"><a href="#" id="rename${id}">Rename</a></li>
+        <li><a href="#" id="history${id}">History ${id}</a></li>
+        <li><a href="#" id="details${id}">Details</a></li>
+        <li><a href="#" id="rename${id}">Rename</a></li>
+    </ul>
+</script>
+
+<script id="unidentifiedMonitorMenuTemplate", type="text/x-jquery-tmpl">
+    <ul class="popupMenu">
+        <li><a href="#" id="history${id}">History ${id}</a></li>
+        <li><a href="#" id="details${id}">Details</a></li>
+        <li><a href="#" id="identify${id}">Identify</a></li>
     </ul>
 </script>
 
 <script id="unidentifiedMonitorTemplate" type="text/x-jquery-tmpl">
     <div class="warning">
-        <a href="identify_monitors.php">
+        <a href="#" id="unidentifiedMonitorLink">
         There is an unidentified monitor reporting into the system.<br />
         Click here to identify it.
         </a>

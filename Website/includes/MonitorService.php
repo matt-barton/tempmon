@@ -4,6 +4,7 @@
 
 require_once (INCLUDES . "DatabaseService.php");
 require_once (DATA_CONTRACTS . "Monitor.php");
+require_once (DATA_CONTRACTS . "UnidentifiedMonitor.php");
 require_once (DATA_CONTRACTS . "Measurement.php");
 
 class MonitorService {
@@ -96,7 +97,68 @@ class MonitorService {
 		{
 			return false;
 		}
-		
+	}
+
+	public function GetIdentifiedMonitors()
+	{
+		$monitors = array();
+		try
+		{
+			$this->db->query(Monitor::FindAllIdentified());
+
+			while ($row = $this->db->GetRow())
+			{
+				$monitor = new Monitor(
+					$row['monitorId'],
+					$row['location']);
+				
+				$monitors[] = $monitor;
+			}
+			
+			return $monitors;
+		}
+		catch(exception $ex)
+		{
+			return false;
+		}
+	}
+
+	public function GetUnidentifiedMonitors()
+	{
+		$unidentifiedMonitors = array();
+		try
+		{
+			$this->db->query(UnidentifiedMonitor::FindAll());
+			while ($row = $this->db->GetRow())
+			{
+				$firstMeasurement = new Measurement(
+					$row['firstId'], 
+					$row['monitorId'], 
+					$row['firstTime'], 
+					$row['firstCelsius'], 
+					$row['firstFarenheit']);
+
+				$lastMeasurement = new Measurement(
+					$row['lastId'], 
+					$row['monitorId'], 
+					$row['lastTime'], 
+					$row['lastCelsius'], 
+					$row['lastFarenheit']);
+
+				$monitor = 
+					new UnidentifiedMonitor(
+					$row['monitorId'],
+					$firstMeasurement,
+					$lastMeasurement);
+				
+				$unidentifiedMonitors[] = $monitor;
+			}
+			return $unidentifiedMonitors;
+		}
+		catch(Exception $ex)
+		{
+			return false;
+		}
 	}
 	
 	/* Private Methods */

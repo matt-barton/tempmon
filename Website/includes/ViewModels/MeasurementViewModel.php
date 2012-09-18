@@ -21,6 +21,15 @@ class MeasurementViewModel
 		$this->Celsius = $celsius;
 		$this->Farenheit = $farenheit;	
 	}
+	
+	public function SetValuesFromMeasurement($measurement)
+	{
+		$this->MeasurementId = $measurement->GetId();
+		$this->MonitorId = $measurement->GetMonitorId();
+		$this->Time = $measurement->GetTime();
+		$this->Celsius = $measurement->GetCelsius();
+		$this->Farenheit = $measurement->GetFarenheit();	
+	}
 }
 
 ?>

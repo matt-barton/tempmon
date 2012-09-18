@@ -5,12 +5,33 @@ function MonitorSummaryController (dataLoader, view, displayController) {
         view.blockPage();
         view.init();
         view.compileTemplates();
+        view.setMonitorHistoryCallback(onMonitorHistory);
+        view.setMonitorDetailsCallback(onMonitorDetails);
+        view.setRenameMonitorCallback(onRenameMonitor);
+        view.setIdentifyMonitorCallback(onIdentifyMonitor);
         dataLoader.getMonitorSummary(displayMonitorSummary,
             displayMonitorSummary,
             displayError);
     }
 
     /* Private Methods */
+    function onMonitorHistory(monitorId) {
+        alert('History ' + monitorId);
+    }
+
+    function onMonitorDetails(monitorId) {
+        alert('Details ' + monitorId);
+
+    }
+
+    function onRenameMonitor(monitorId) {
+        alert('Rename ' + monitorId);
+    }
+
+    function onIdentifyMonitor(monitorId) {
+        view.redirectToMonitorIdentification();
+    }
+
     function displayMonitorSummary(model) {
         if (model.UnidentifiedMonitor) {
             view.displayUnidentifiedMonitorWarning();
@@ -23,8 +44,10 @@ function MonitorSummaryController (dataLoader, view, displayController) {
     }
 
     function setDisplayProperties(monitor) {
-        if (monitor.Location.length == 0) {
+        monitor.Unidentified = false;
+        if (monitor.Location == null || monitor.Location.length == 0) {
             monitor.Location = '???';
+            monitor.Unidentified = true;
         }
 
         if (monitor.Measurements.length == 1) {

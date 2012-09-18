@@ -5,6 +5,7 @@
 require_once WEB_SERVICES . "JsonWebService.php";
 require_once INCLUDES     . "MonitorService.php";
 require_once VIEW_MODELS  . 'MonitorSummaryViewModel.php';
+require_once VIEW_MODELS  . 'UnidentifiedMonitorsViewModel.php';
 
 class MonitorJsonService extends JsonWebService {
 	
@@ -20,6 +21,10 @@ class MonitorJsonService extends JsonWebService {
 				$this->GetSummary();
 				break;
 			
+			case 'GetUnidentifiedMonitors':
+				$this->GetUnidentifiedMonitors();
+				break;
+				
 			default:
 				die();
 				break;
@@ -33,6 +38,15 @@ class MonitorJsonService extends JsonWebService {
 		$monitors = $monitorService->GetAllWithCurrentMeasurement();
 		
 		$this->SetOutput(new MonitorSummaryViewModel($monitors));
+	}
+	
+	private function GetUnidentifiedMonitors()
+	{
+		$monitorService = new MonitorService();
+		
+		$unidentifiedMonitors = $monitorService->GetUnidentifiedMonitors();
+		$identifiedMonitors = $monitorService->GetIdentifiedMonitors();
+		$this->SetOutput(new UnidentifiedMonitorsViewModel($unidentifiedMonitors, $identifiedMonitors));
 	}
 }
 

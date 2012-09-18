@@ -2,7 +2,12 @@ function MonitorSummaryView (context) {
 
     var monitorsArea = $('#monitorsArea', context);
     var notificationArea = $('#notificationArea', context);
+    var monitorHistoryCallback;
+    var monitorDetailsCallback;
+    var renameMonitorCallback;
+    var identifyMonitorCallback;
 
+    /* Public Methods */
     function init() {
         $('html').click(hidePopupMenus);
     }
@@ -18,11 +23,22 @@ function MonitorSummaryView (context) {
     function compileTemplates() {
         $.template('monitorTemplate', $('#monitorTemplate', context));
         $.template('monitorMenuTemplate', $('#monitorMenuTemplate', context));
+        $.template('unidentifiedMonitorMenuTemplate', $('#unidentifiedMonitorMenuTemplate', context));
         $.template('unidentifiedMonitorTemplate', $('#unidentifiedMonitorTemplate', context));
     }
 
     function displayError(error) {
         alert(error);
+    }
+
+    function displayUnidentifiedMonitorWarning() {
+        $.tmpl('unidentifiedMonitorTemplate', {})
+            .find('a#unidentifiedMonitorLink')
+                .click(redirectToMonitorIdentification)
+                .end()
+            .hide()
+            .appendTo(notificationArea)
+            .show('slow');
     }
 
     function displayMonitor(monitor) {
@@ -56,58 +72,73 @@ function MonitorSummaryView (context) {
             .appendTo(monitorsArea);
     }
 
+    function setMonitorHistoryCallback(callback) {
+        monitorHistoryCallback = callback;
+    }
+
+    function setMonitorDetailsCallback(callback) {
+        monitorDetailsCallback = callback;
+    }
+
+    function setRenameMonitorCallback(callback) {
+        renameMonitorCallback = callback;
+    }
+
+    function setIdentifyMonitorCallback(callback) {
+        identifyMonitorCallback = callback;
+    }
+
+    function redirectToMonitorIdentification() {
+        window.location.href = 'identify_monitors.php';
+    }
+
+    /* Private Methods */
     function createPopupMenu(monitor) {
-        var popupMenu = $.tmpl('monitorMenuTemplate', { id: monitor.MonitorId });
+
+        var templateName = 'monitorMenuTemplate';
+        if (monitor.Unidentified) {
+            templateName = 'unidentifiedMonitorMenuTemplate';
+        }
+
+        var popupMenu = $.tmpl(templateName, { id: monitor.MonitorId });
 
         // change css classes to the first and last menu items
         var menuItems = $('li', popupMenu);
         menuItems
             .each(function (idx, item) {
                 if (idx == 0) {
-                    $(item)
-                        .addClass('menuItemTop')
-                        .removeClass('menuItem')
+                    $(item).addClass('menuItemTop');
                 }
-
-                if (idx == (menuItems.length - 1)) {
-                    $(item)
-                        .addClass('menuItemBottom')
-                        .removeClass('menuItem')
+                else if (idx == (menuItems.length - 1)) {
+                    $(item).addClass('menuItemBottom');
+                }
+                else {
+                    $(item).addClass('menuItem');
                 }
             });
 
         // assign click events to menu items
         $('a#history' + monitor.MonitorId, popupMenu)
             .click(function () {
-                monitorHistory(monitor.MonitorId);
+                monitorHistoryCallback(monitor.MonitorId);
             });
 
         $('a#details' + monitor.MonitorId, popupMenu)
             .click(function () {
-                monitorDetails(monitor.MonitorId);
+                monitorDetailsCallback(monitor.MonitorId);
             });
 
         $('a#rename' + monitor.MonitorId, popupMenu)
             .click(function () {
-                renameMonitor(monitor.MonitorId);
+                renameMonitorCallback(monitor.MonitorId);
             });
 
-            return popupMenu;
-    }
+        $('a#identify' + monitor.MonitorId, popupMenu)
+            .click(function () {
+                identifyMonitorCallback(monitor.MonitorId);
+            });
 
-    function monitorHistory(monitorId) {
-        // TODO: complete this method
-        alert('History for monitor ' + monitorId);
-    }
-
-    function monitorDetails(monitorId) {
-        // TODO: complete this method
-        alert('Details for monitor ' + monitorId);
-    }
-
-    function renameMonitor(monitorId) {
-        // TODO: complete this method
-        alert('Rename monitor ' + monitorId);
+        return popupMenu;
     }
 
     function hidePopupMenus() {
@@ -135,13 +166,6 @@ function MonitorSummaryView (context) {
             .slideToggle('fast');
     }
 
-    function displayUnidentifiedMonitorWarning() {
-        $.tmpl('unidentifiedMonitorTemplate', {})
-            .hide()
-            .appendTo(notificationArea)
-            .show('slow');
-    }
-
     return {
         init: init,
         blockPage: blockPage,
@@ -149,6 +173,11 @@ function MonitorSummaryView (context) {
         compileTemplates: compileTemplates,
         displayUnidentifiedMonitorWarning: displayUnidentifiedMonitorWarning,
         displayMonitor: displayMonitor,
-        displayError: displayError
+        displayError: displayError,
+        setMonitorHistoryCallback: setMonitorHistoryCallback,
+        setMonitorDetailsCallback: setMonitorDetailsCallback,
+        setRenameMonitorCallback: setRenameMonitorCallback,
+        setIdentifyMonitorCallback: setIdentifyMonitorCallback,
+        redirectToMonitorIdentification: redirectToMonitorIdentification
     };
 };

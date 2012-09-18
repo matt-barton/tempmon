@@ -6,21 +6,54 @@ function MonitorSummaryDataLoader () {
 
         var serviceMethod = "GetSummary";
 
-        var parameters = {
-        };
-
         jsonDataLoader.post(
             servicePath + "/" + serviceMethod,
             serviceMethod,
-            parameters,
+            {},
             successCallback,
             errorCallback
         );
     }
 
-function createApi() {
+    function getMonitorHistory(monitorId, successCallback, errorCallback) {
+
+        var serviceMethod = "GetHistory";
+
+        if (monitorId != null) {
+            serviceMethod += "?MonitorId=" + monitorId;
+        }
+
+        jsonDataLoader.post(
+            servicePath + "/" + serviceMethod,
+            serviceMethod,
+            {},
+            successCallback,
+            errorCallback
+        );
+    }
+
+    function getMonitorDetails(monitorId, successCallback, errorCallback) {
+
+        var serviceMethod = "GetSummary";
+
+        if (monitorId != null) {
+            serviceMethod += "?MonitorId=" + monitorId;
+        }
+
+        jsonDataLoader.post(
+            servicePath + "/" + serviceMethod,
+            serviceMethod,
+            {},
+            successCallback,
+            errorCallback
+        );
+    }
+
+    function createApi() {
     return {
-        getMonitorSummary: getMonitorSummary
+        getMonitorSummary: getMonitorSummary,
+        getMonitorHistory: getMonitorHistory,
+        getMonitorDetails: getMonitorDetails
     };
 }
 

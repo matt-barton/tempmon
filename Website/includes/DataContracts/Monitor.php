@@ -103,6 +103,17 @@ class Monitor
                           FROM tempmon_Measurement mea
                          WHERE mea.monitorId = mon.monitorId)";
 	}
+	
+	public static function FindAllIdentified ()
+	{
+		$config = new Config();
+		$prefix = $config->tablePrefix;
+
+		return "SELECT *
+                  FROM " . $prefix . "Monitor mon
+                 WHERE mon.Location IS NOT NULL";
+	}
+
 }
 
 ?>

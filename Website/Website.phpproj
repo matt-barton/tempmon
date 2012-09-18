@@ -150,6 +150,10 @@
     {
     "ProjRelPath" = "T"
     }
+    "document_root\\identify_monitors.php"
+    {
+    "ProjRelPath" = "T"
+    }
     "document_root\\images"
     {
     "ProjRelPath" = "T"
@@ -171,6 +175,10 @@
     "ProjRelPath" = "T"
     }
     "document_root\\scripts\\DisplayController.js"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\IdentifyMonitors"
     {
     "ProjRelPath" = "T"
     }
@@ -251,6 +259,10 @@
     "ProjRelPath" = "T"
     }
     "includes\\DataContracts\\Monitor.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\DataContracts\\UnidentifiedMonitor.php"
     {
     "ProjRelPath" = "T"
     }
@@ -346,6 +358,10 @@
     {
     "ProjRelPath" = "T"
     }
+    "includes\\Templates\\IdentifyMonitorsPage.html"
+    {
+    "ProjRelPath" = "T"
+    }
     "includes\\templates\\MonitorSummaryPage.html"
     {
     "ProjRelPath" = "T"
@@ -367,6 +383,14 @@
     "ProjRelPath" = "T"
     }
     "includes\\ViewModels\\MonitorViewModel.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\ViewModels\\UnidentifiedMonitorsViewModel.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "includes\\ViewModels\\UnidentifiedMonitorViewModel.php"
     {
     "ProjRelPath" = "T"
     }
