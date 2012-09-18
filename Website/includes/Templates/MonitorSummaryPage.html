@@ -1,6 +1,8 @@
+<!-- Javascript -->
 <script src="{{root}}/scripts/MonitorSummary/MonitorSummaryController.js" type="text/javascript"></script>
 <script src="{{root}}/scripts/MonitorSummary/MonitorSummaryDataLoader.js" type="text/javascript"></script>
 <script src="{{root}}/scripts/MonitorSummary/MonitorSummaryView.js" type="text/javascript"></script>
+<script src="{{root}}/scripts/DisplayController.js" type="text/javascript"></script>
 
 <script src="{{root}}/scripts/Tools/Browser.Http.js" type="text/javascript"></script>
 <script src="{{root}}/scripts/Tools/Json.js" type="text/javascript"></script>
@@ -10,7 +12,39 @@
     $(document).ready(function () {
         var view = new MonitorSummaryView($(document.body));
         var dataLoader = new MonitorSummaryDataLoader();
-        var controller = new MonitorSummaryController(dataLoader, view);
+        var displayController = new DisplayController();
+        var controller = new MonitorSummaryController(dataLoader, view, displayController);
         controller.init();
     });
 </script> 
+
+<!-- Markup -->
+<div id="notificationArea"></div>
+<div id="monitorsTitle">Monitors</div>
+<div id="monitorsArea"></div>
+
+<!-- Templates -->
+<script id="monitorTemplate" type="text/x-jquery-tmpl"> 
+    <div class="monitorBox ${Style}">
+        <div class="monitorLocation">${Location}</div>
+        <div class="menuImage"><img src="images/menu.png" /></div>
+        <div class="monitorTemperature">${Temperature}&deg; ${Scale}</div>
+    </div>
+</script>
+
+<script id="monitorMenuTemplate", type="text/x-jquery-tmpl">
+    <ul class="popupMenu">
+        <li class="menuItem"><a href="#" id="history${id}">History ${id}</a></li>
+        <li class="menuItem"><a href="#" id="details${id}">Details</a></li>
+        <li class="menuItem"><a href="#" id="rename${id}">Rename</a></li>
+    </ul>
+</script>
+
+<script id="unidentifiedMonitorTemplate" type="text/x-jquery-tmpl">
+    <div class="warning">
+        <a href="identify_monitors.php">
+        There is an unidentified monitor reporting into the system.<br />
+        Click here to identify it.
+        </a>
+    </div>
+</script>

@@ -38,7 +38,51 @@
     {
     "ProjRelPath" = "T"
     }
+    "document_root\\css\\fonts"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\fonts\\museo-sans"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\fonts\\museo-sans\\MuseoSans_500-webfont.eot"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\fonts\\museo-sans\\MuseoSans_500-webfont.svg"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\fonts\\museo-sans\\MuseoSans_500-webfont.ttf"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\fonts\\museo-sans\\MuseoSans_500-webfont.woff"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\fonts\\museo-sans\\stylesheet.css"
+    {
+    "ProjRelPath" = "T"
+    }
     "document_root\\css\\images"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\error.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\info.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\menu.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\images\\success.png"
     {
     "ProjRelPath" = "T"
     }
@@ -94,7 +138,23 @@
     {
     "ProjRelPath" = "T"
     }
+    "document_root\\css\\images\\warning.png"
+    {
+    "ProjRelPath" = "T"
+    }
     "document_root\\css\\jquery-ui-1.8.23.custom.css"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\css\\main.css"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\images"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\images\\menu.png"
     {
     "ProjRelPath" = "T"
     }
@@ -107,6 +167,10 @@
     "ProjRelPath" = "T"
     }
     "document_root\\scripts"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\DisplayController.js"
     {
     "ProjRelPath" = "T"
     }
@@ -123,6 +187,14 @@
     "ProjRelPath" = "T"
     }
     "document_root\\scripts\\jQuery\\jquery-ui-1.8.23.custom.min.js"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\jQuery\\jquery.blockUI.js"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\jQuery\\jquery.tmpl.js"
     {
     "ProjRelPath" = "T"
     }
@@ -147,6 +219,10 @@
     "ProjRelPath" = "T"
     }
     "document_root\\WebServices\\MeasurementWebService.php"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\WebServices\\MonitorWebService.php"
     {
     "ProjRelPath" = "T"
     }
