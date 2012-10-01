@@ -25,7 +25,7 @@ class MonitorService {
 		}
 		catch (Exception $ex)
 		{
-			error_log (print_r($ex));
+			error_log (print_r($ex, true));
 			return false;
 		}
 		
@@ -37,7 +37,7 @@ class MonitorService {
 			}
 			catch (exception $ex)
 			{
-				error_log (print_r($ex));
+				error_log (print_r($ex, true));
 				return false;
 			}
 			$monitorId = $this->db->InsertId();
@@ -48,7 +48,7 @@ class MonitorService {
 			}
 			catch (exception $ex)
 			{
-				error_log (print_r($ex));
+				error_log (print_r($ex, true));
 				return false;
 			}
 		}
@@ -59,7 +59,7 @@ class MonitorService {
 		}
 		catch (Exception $ex)
 		{
-			error_log (print_r($ex));
+			error_log (print_r($ex, true));
 			return false;
 		}
 		
@@ -95,6 +95,7 @@ class MonitorService {
 		}
 		catch(exception $ex)
 		{
+			error_log (print_r($ex, true));
 			return false;
 		}
 	}
@@ -110,7 +111,8 @@ class MonitorService {
 			{
 				$monitor = new Monitor(
 					$row['monitorId'],
-					$row['location']);
+					$row['location'],
+					array());
 				
 				$monitors[] = $monitor;
 			}
@@ -119,6 +121,7 @@ class MonitorService {
 		}
 		catch(exception $ex)
 		{
+			error_log (print_r($ex, true));
 			return false;
 		}
 	}
@@ -157,6 +160,40 @@ class MonitorService {
 		}
 		catch(Exception $ex)
 		{
+			error_log (print_r($ex, true));
+			return false;
+		}
+	}
+	
+	public function AddLocationToUnidentifedMonitor($monitorId, $location)
+	{
+		try
+		{
+			$this->db->query(Monitor::AddLocationToUnidentified($monitorId, $location));
+		}
+		catch (Exception $ex)
+		{
+			error_log (print_r($ex, true));
+			return false;
+		}
+		
+	}
+	
+	public function MoveDataFromUnidentifiedMonitorToIdentifiedMonitor($existingMonitorId, $unidentifiedMonitorId)
+	{
+		try
+		{
+			$this->db->query(Monitor::MoveIdentificationFromUnidentifiedMonitorToIdentifiedMonitor
+				($existingMonitorId, $unidentifiedMonitorId));
+
+			$this->db->query(Monitor::MoveMeasurementsFromUnidentifiedMonitorToIdentifiedMonitor
+				($existingMonitorId, $unidentifiedMonitorId));
+			
+			$this->db->query(Monitor::RemoveUnidentifiedMonitor($unidentifiedMonitorId));
+		}
+		catch (Exception $ex)
+		{
+			error_log (print_r($ex, true));
 			return false;
 		}
 	}

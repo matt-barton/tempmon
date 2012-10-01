@@ -1,1 +1,65 @@
-identify monitors
+<!-- Javascript -->
+<script src="{{root}}/scripts/IdentifyMonitors/IdentifyMonitorsController.js" type="text/javascript"></script>
+<script src="{{root}}/scripts/IdentifyMonitors/IdentifyMonitorsDataLoader.js" type="text/javascript"></script>
+<script src="{{root}}/scripts/IdentifyMonitors/IdentifyMonitorsView.js" type="text/javascript"></script>
+<script src="{{root}}/scripts/DisplayController.js" type="text/javascript"></script>
+<script src="{{root}}/scripts/ToolbarView.js" type="text/javascript"></script>
+
+<script src="{{root}}/scripts/Tools/Browser.Http.js" type="text/javascript"></script>
+<script src="{{root}}/scripts/Tools/Json.js" type="text/javascript"></script>
+<script src="{{root}}/scripts/Tools/JsonDataLoader.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var view = new IdentifyMonitorsView($(document.body));
+        var dataLoader = new IdentifyMonitorsDataLoader();
+        var displayController = new DisplayController();
+        var toolbarView = new ToolbarView($(document.body));
+        var controller = new IdentifyMonitorsController(dataLoader, view, displayController, toolbarView);
+        controller.init();
+    });
+</script> 
+
+<!-- CSS -->
+<link href="{{root}}/css/IdentifyMonitors.css" rel="stylesheet" type="text/css" />
+
+<!-- Markup -->
+<div id="unidentifiedMonitorsArea"></div>
+
+<!-- Templates -->
+<script id="unidentifiedMonitorTemplate" type="text/x-jquery-tmpl">
+    <div class="unidentifiedMonitorBox ${Style}">
+        <div class="title">Unidentified Monitor #${Count}</div>
+        <div class="row">
+            <div class="label">First Activity:</div>
+            <div class="value">${FirstActivity}</div>
+        </div>
+        <div class="row">
+            <div class="label">Most Recent Activity:</div>
+            <div class="value">${LastActivity}</div>
+        </div>
+        <div id="buttonArea_${Id}" class="buttonRow">
+            <button id="newMonitorButton_${Id}" class="topSpace" title="Click to create a new monitor from this data">New Monitor</button>
+            <button id="existingMonitorButton_${Id}" class="topSpace" title="Click to assign this data to an existing monitor">Existing Monitor</button>
+        </div>
+        <br class="clear" />
+        <div id="newMonitorArea_${Id}" class="newMonitorArea">
+            <label for="newMonitorLocation_${Id}">Location:</label> <input type="text" id="newMonitorLocation_${Id}" class="form-field topSpace" />
+        </div>
+        <div id="existingMonitorArea_${Id}" class="existingMonitorArea">
+            <label for="existingMonitorSelect_${Id}">Existing Monitor:</label> <select id="existingMonitorSelect_${Id}" class="form-field topSpace"></select>
+        </div>
+        <div id="submitArea_${Id}" class="submitArea">
+            <button class="submitButton topSpace" id="submitButton_${Id}">Submit</button>
+            <button class="cancelButton topSpace" id="cancelButton_${Id}">Cancel</button>
+        </div>
+        <br class="clear" />
+    </div>
+</script>
+
+<script id="noUnidentifiedMonitorsTemplate" type="text/x-jquery-tmpl">
+    <div id="noUnidentifiedMonitorsWarning" class="info">
+        <a id="returnToSummary" href="#">There are no unidentified monitors reporting into the system.<br/>
+        Return to summary.</a>
+    </div>
+</script>

@@ -66,6 +66,10 @@
     {
     "ProjRelPath" = "T"
     }
+    "document_root\\css\\IdentifyMonitors.css"
+    {
+    "ProjRelPath" = "T"
+    }
     "document_root\\css\\images"
     {
     "ProjRelPath" = "T"
@@ -150,6 +154,10 @@
     {
     "ProjRelPath" = "T"
     }
+    "document_root\\css\\MonitorSummary.css"
+    {
+    "ProjRelPath" = "T"
+    }
     "document_root\\identify_monitors.php"
     {
     "ProjRelPath" = "T"
@@ -182,6 +190,18 @@
     {
     "ProjRelPath" = "T"
     }
+    "document_root\\scripts\\IdentifyMonitors\\IdentifyMonitorsController.js"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\IdentifyMonitors\\IdentifyMonitorsDataLoader.js"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\IdentifyMonitors\\IdentifyMonitorsView.js"
+    {
+    "ProjRelPath" = "T"
+    }
     "document_root\\scripts\\jQuery"
     {
     "ProjRelPath" = "T"
@@ -202,6 +222,10 @@
     {
     "ProjRelPath" = "T"
     }
+    "document_root\\scripts\\jQuery\\jquery.dateFormat-1.0.js"
+    {
+    "ProjRelPath" = "T"
+    }
     "document_root\\scripts\\jQuery\\jquery.tmpl.js"
     {
     "ProjRelPath" = "T"
@@ -219,6 +243,22 @@
     "ProjRelPath" = "T"
     }
     "document_root\\scripts\\MonitorSummary\\MonitorSummaryView.js"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\Tools"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\Tools\\Browser.Http.js"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\Tools\\Json.js"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\Tools\\JsonDataLoader.js"
     {
     "ProjRelPath" = "T"
     }

@@ -13,8 +13,7 @@ CREATE TABLE tempmon_MonitorIdentity (
 	identity VARCHAR(36),
 	identityType VARCHAR(4),
 
-	PRIMARY KEY (monitorId),
-	UNIQUE INDEX (identity, identityType)
+	PRIMARY KEY (identity, identityType)
 );
 
 

@@ -5,6 +5,7 @@
         <script src="{{root}}/scripts/jQuery/jquery-ui-1.8.23.custom.min.js" type="text/javascript"></script>
         <script src="{{root}}/scripts/jQuery/jquery.blockUI.js" type="text/javascript"></script>
         <script src="{{root}}/scripts/jQuery/jquery.tmpl.js" type="text/javascript"></script>
+        <script src="{{root}}/scripts/jQuery/jquery.dateFormat-1.0.js" type="text/javascript"></script>
         <link href="{{root}}/css/jquery-ui-1.8.23.custom.css" rel="stylesheet" type="text/css" />
         <link href="{{root}}/css/main.css" rel="stylesheet" type="text/css" />
     </head>
@@ -12,6 +13,11 @@
         <div id="header">
             <span id="headerText">Temperature Monitor</span>
         </div>
+        <div id="toolbar">
+            <img id="toolbarBack" class="button" title="Back" src="{{root}}/images/back.png" />
+            <img id="toolbarRefresh" class="button" title="Refresh" src="{{root}}/images/refresh.png" />
+        </div>
+        <div class="clearFloats"></div>
         {{content}}        
     </body>
 </html>

@@ -11,7 +11,7 @@ jsonDataLoader = {
     post: function (url, method, parameters, successCallback, errorCallback) {
         var jsonData = JSON2.stringify(parameters);
 
-        return baseDataLoader.post("json", jsonData, "text/plain; charset=utf-8", url,
+        return baseDataLoader.post("json", jsonData, "application/json", url,
       function (response) {
           successCallback(response);
       },

@@ -1,7 +1,9 @@
 function MonitorSummaryView (context) {
 
+    var contentArea = $('#contentArea', context);
     var monitorsArea = $('#monitorsArea', context);
     var notificationArea = $('#notificationArea', context);
+
     var monitorHistoryCallback;
     var monitorDetailsCallback;
     var renameMonitorCallback;
@@ -10,6 +12,11 @@ function MonitorSummaryView (context) {
     /* Public Methods */
     function init() {
         $('html').click(hidePopupMenus);
+    }
+
+    function clear() {
+        clearArea(monitorsArea);
+        clearArea(notificationArea);
     }
 
     function blockPage() {
@@ -93,6 +100,13 @@ function MonitorSummaryView (context) {
     }
 
     /* Private Methods */
+    function clearArea(area) {
+        area.hide('blind', {}, 'fast', function () {
+            area.empty()
+                .show();
+        });
+    }
+
     function createPopupMenu(monitor) {
 
         var templateName = 'monitorMenuTemplate';
@@ -168,6 +182,7 @@ function MonitorSummaryView (context) {
 
     return {
         init: init,
+        clear: clear,
         blockPage: blockPage,
         unblockPage: unblockPage,
         compileTemplates: compileTemplates,

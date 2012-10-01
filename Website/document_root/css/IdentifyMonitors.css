@@ -1,0 +1,106 @@
+
+#unidentifiedMonitorsArea
+{
+    min-height: 400px;
+}
+
+.unidentifiedMonitorBox
+{
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.odd
+{
+    background-color: #bebeec;
+}
+
+.even
+{
+    background-color: #d69cdc;
+}
+
+.unidentifiedMonitorBox .title
+{
+    font-size: 1.5em;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.unidentifiedMonitorBox .row
+{
+    clear: both;
+}
+
+.unidentifiedMonitorBox .label
+{
+    width: 175px;
+    float: left;
+    padding-left: 40px;
+    padding-right: 10px;
+    text-align: right;
+}
+
+.unidentifiedMonitorBox .value
+{
+    float: left;
+    padding-left: 15px;
+    font-weight: bold;
+}
+
+.unidentifiedMonitorBox .buttonRow
+{
+    width: 100%;
+    text-align: center;
+}
+
+.topSpace
+{
+    margin-top: 10px;
+}
+
+.ui-button-text-only .ui-button-text 
+{
+    padding: 0.1em 1em 0.1em 1em;
+}
+
+.existingMonitorArea, .newMonitorArea, .submitArea
+{
+    padding-top: 10px;
+    display: none;
+    text-align: center;
+    width: 100%;
+}
+
+input, select
+{
+    background-color: #d8d8e6;
+    color: #333;
+    border: 1px solid #333;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 2px;
+}
+
+br.clear
+{
+    clear: both;
+}
+
+#noUnidentifiedMonitorsWarning
+{
+    text-align: center;
+}
+
+#returnToSummary
+{
+   text-decoration: none;
+
+}
+
+#returnToSummary:hover
+{
+    text-decoration: underline;
+}

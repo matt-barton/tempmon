@@ -1,4 +1,4 @@
-function MonitorSummaryController (dataLoader, view, displayController) {
+function MonitorSummaryController (dataLoader, view, displayController, toolbarView) {
 
     /* Public Methods */
     function init() {
@@ -32,6 +32,14 @@ function MonitorSummaryController (dataLoader, view, displayController) {
         view.redirectToMonitorIdentification();
     }
 
+    function refresh() {
+        view.blockPage();
+        view.clear();
+        dataLoader.getMonitorSummary(displayMonitorSummary,
+            displayMonitorSummary,
+            displayError);
+    }
+
     function displayMonitorSummary(model) {
         if (model.UnidentifiedMonitor) {
             view.displayUnidentifiedMonitorWarning();
@@ -39,6 +47,9 @@ function MonitorSummaryController (dataLoader, view, displayController) {
         $.each(model.Monitors, function (index, monitor) {
             setDisplayProperties(monitor);
             view.displayMonitor(monitor);
+        });
+        toolbarView.setToolbarActions({
+            refresh: refresh
         });
         view.unblockPage();
     }

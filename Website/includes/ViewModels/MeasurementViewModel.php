@@ -9,11 +9,11 @@ class MeasurementViewModel
 	public $Farenheit;
 	
 	public function __construct (
-		$measurementId,
-		$monitorId,
-		$time,
-		$celsius,
-		$farenheit)
+		$measurementId = null,
+		$monitorId = null,
+		$time = null,
+		$celsius = null,
+		$farenheit = null)
 	{
 		$this->MeasurementId = $measurementId;
 		$this->MonitorId = $monitorId;

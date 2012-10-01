@@ -19,6 +19,7 @@ body
     padding-bottom: 15px;
     text-align: center;
     font-size: 2.3em;
+    float:left;
 }
 
 #header #headerText 
@@ -26,155 +27,29 @@ body
     margin-left: 10px;
 }
 
-/* monitor styles */
-#monitorsTitle 
-{
-    margin-top: 15px;
-    font-size: 1.3em;
-}
-
-.monitorBox 
-{
-    margin-top: 5px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    color: #333;
-}
-
-.monitorBox .menuImage
+#toolbar
 {
     float: right;
-    padding-right: 20px;
-    padding-top: 8px;
-    width: 12px;
-    display: none;
+    margin-left: 20px;
 }
 
-.monitorBox .menuImage img:hover
+#toolbar .button
 {
+    display: none;
     cursor: pointer;
 }
 
-.monitorLocation 
+#toolbar .toolbarBorder
 {
-    padding-top: 5px;
-    margin-left: 10px;
+    border: 1px dashed #ddd;   
 }
 
-.monitorTemperature 
+div.clearFloats
 {
-    font-size: 2em;
-    padding-bottom: 15px;
-    text-align: center;
-    width: 93%;
-    float: none;
+    clear:both;
 }
 
-/* popup menu styles */
-ul.popupMenu
-{
-    display: none;
-    position: absolute;
-    width:100px;
-    border:1px solid #ddd;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
-}
-
-ul.popupMenu, li.menuItem, li.menuItemTop, li.menuItemBottom 
-{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-ul.popupMenu li.menuItem 
-{
-    background:#333;
-}
-
-ul.popupMenu li.menuItemTop
-{
-    background:#333;
-    -moz-border-radius-topleft: 6px;
-    -moz-border-radius-topright: 6px;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-}
-
-ul.popupMenu li.menuItemBottom
-{
-    background:#333;
-    -moz-border-radius-bottomleft: 6px;
-    -moz-border-radius-bottomright: 6px;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-}
-
-ul.popupMenu a
-{
-    color: #ddd;
-    text-decoration: none;
-    padding: 5px 10px 5px 10px;
-    display: block;
-}
-
-/* temperature related styles */
-.temp-freezing 
-{
-    background-color: #0066ff;
-}
-
-.temp-very-cold
-{
-    background-color: #66a3ff;
-}
-
-.temp-cold
-{
-    background-color: #33cccc;
-}
-
-.temp-cool
-{
-    background-color: #00ff99;
-}
-
-.temp-mild
-{
-    background-color: #99ff99;
-}
-
-.temp-slightly-warm
-{
-    background-color: #ccff66;
-}
-
-.temp-warm
-{
-    background-color: #ccff33;
-}
-
-.temp-quite-hot
-{
-    background-color: #ffff00;
-}
-
-.temp-hot
-{
-    background-color: #ff9933;
-}
-
-.temp-very-hot
-{
-    background-color: #ff3300;
-}
-
-.temp-extremely-hot
-{
-    background-color: #800000;
-}
-
+/* monitor styles */
 /* Notification styles */
 .info, .success, .warning, .error, .validation
 {
