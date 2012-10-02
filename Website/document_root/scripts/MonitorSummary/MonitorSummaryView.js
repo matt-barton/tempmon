@@ -86,24 +86,25 @@ function MonitorSummaryView (context) {
 
         var nameField = $('#newMonitorName_' + monitorId, monitorDetailsArea);
 
+        function doRename() {
+            renameMonitorCallback(monitorId, nameField.val());
+        }
+
+        function cancel() {
+            clearArea(monitorDetailsArea);
+        }
+
         $('#renameSubmitButton_' + monitorId, monitorDetailsArea)
-            .click(function () {
-                renameMonitorCallback(monitorId, nameField.val());
-            });
+            .click(doRename);
 
         $('#renameCancelButton_' + monitorId, monitorDetailsArea)
-            .click(function () {
-                clearArea(monitorDetailsArea);
-            });
+            .click(cancel);
 
         $('#renameForm_' + monitorId, monitorDetailsArea)
-            .submit(function () {
-                renameMonitorCallback(monitorId, nameField.val());
-                return false;
-            })
+            .submit(doRename)
             .keyup(function (e) {
                 if (e.keyCode == '27') { // esc key
-                    clearArea(monitorDetailsArea);
+                    cancel();
                 }
             });
 
