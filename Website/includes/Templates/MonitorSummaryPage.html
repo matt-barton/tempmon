@@ -36,6 +36,7 @@
         <div class="monitorLocation">${Location}</div>
         <div class="menuImage"><img src="images/menu.png" /></div>
         <div class="monitorTemperature">${Temperature}&deg; ${Scale}</div>
+        <div class="monitorDetails" id="monitorDetailsArea_${MonitorId}"></div>
     </div>
 </script>
 
@@ -62,4 +63,12 @@
         Click here to identify it.
         </a>
     </div>
+</script>
+
+<script id="renameMonitorTemplate" type="text/x-jquery-tmpl">
+    <form id="renameForm_${Id}">
+        <label for="newMonitorName_${Id}">New Name:</label> <input type="text" id="newMonitorName_${Id}" class="form-field" />
+        <img id="renameSubmitButton_${Id}" src="{{root}}/images/submit.png" title="Submit" class="button" />
+        <img id="renameCancelButton_${Id}" src="{{root}}/images/cancel.png" title="Cancel" class="button" />
+    </form>
 </script>

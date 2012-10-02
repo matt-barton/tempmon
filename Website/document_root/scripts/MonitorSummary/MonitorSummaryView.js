@@ -7,11 +7,11 @@ function MonitorSummaryView (context) {
     var monitorHistoryCallback;
     var monitorDetailsCallback;
     var renameMonitorCallback;
-    var identifyMonitorCallback;
 
     /* Public Methods */
     function init() {
         $('html').click(hidePopupMenus);
+        compileTemplates();
     }
 
     function clear() {
@@ -25,13 +25,6 @@ function MonitorSummaryView (context) {
 
     function unblockPage() {
         context.unblock();
-    }
-
-    function compileTemplates() {
-        $.template('monitorTemplate', $('#monitorTemplate', context));
-        $.template('monitorMenuTemplate', $('#monitorMenuTemplate', context));
-        $.template('unidentifiedMonitorMenuTemplate', $('#unidentifiedMonitorMenuTemplate', context));
-        $.template('unidentifiedMonitorTemplate', $('#unidentifiedMonitorTemplate', context));
     }
 
     function displayError(error) {
@@ -79,6 +72,46 @@ function MonitorSummaryView (context) {
             .appendTo(monitorsArea);
     }
 
+    function displayMonitorRenameControls(monitorId) {
+        var monitorDetailsArea = $('#monitorDetailsArea_' + monitorId, context);
+        monitorDetailsArea.empty();
+
+        var data = {
+            Id: monitorId
+        };
+
+        var template = $.tmpl('renameMonitorTemplate', data)
+            .hide()
+            .appendTo(monitorDetailsArea);
+
+        var nameField = $('#newMonitorName_' + monitorId, monitorDetailsArea);
+
+        $('#renameSubmitButton_' + monitorId, monitorDetailsArea)
+            .click(function () {
+                renameMonitorCallback(monitorId, nameField.val());
+            });
+
+        $('#renameCancelButton_' + monitorId, monitorDetailsArea)
+            .click(function () {
+                clearArea(monitorDetailsArea);
+            });
+
+        $('#renameForm_' + monitorId, monitorDetailsArea)
+            .submit(function () {
+                renameMonitorCallback(monitorId, nameField.val());
+                return false;
+            })
+            .keyup(function (e) {
+                if (e.keyCode == '27') { // esc key
+                    clearArea(monitorDetailsArea);
+                }
+            });
+
+        template.show('quick');
+        $('#newMonitorName_' + monitorId, monitorDetailsArea)
+            .focus();
+    }
+
     function setMonitorHistoryCallback(callback) {
         monitorHistoryCallback = callback;
     }
@@ -91,15 +124,19 @@ function MonitorSummaryView (context) {
         renameMonitorCallback = callback;
     }
 
-    function setIdentifyMonitorCallback(callback) {
-        identifyMonitorCallback = callback;
-    }
-
     function redirectToMonitorIdentification() {
         window.location.href = 'identify_monitors.php';
     }
 
     /* Private Methods */
+    function compileTemplates() {
+        $.template('monitorTemplate', $('#monitorTemplate', context));
+        $.template('monitorMenuTemplate', $('#monitorMenuTemplate', context));
+        $.template('unidentifiedMonitorMenuTemplate', $('#unidentifiedMonitorMenuTemplate', context));
+        $.template('unidentifiedMonitorTemplate', $('#unidentifiedMonitorTemplate', context));
+        $.template('renameMonitorTemplate', $('#renameMonitorTemplate', context));
+    }
+
     function clearArea(area) {
         area.hide('blind', {}, 'fast', function () {
             area.empty()
@@ -134,22 +171,22 @@ function MonitorSummaryView (context) {
         // assign click events to menu items
         $('a#history' + monitor.MonitorId, popupMenu)
             .click(function () {
-                monitorHistoryCallback(monitor.MonitorId);
+                alert("View history for " + monitor.MonitorId);
             });
 
         $('a#details' + monitor.MonitorId, popupMenu)
             .click(function () {
-                monitorDetailsCallback(monitor.MonitorId);
+                alert("View details for " + monitor.MonitorId);
             });
 
         $('a#rename' + monitor.MonitorId, popupMenu)
             .click(function () {
-                renameMonitorCallback(monitor.MonitorId);
+                displayMonitorRenameControls(monitor.MonitorId);
             });
 
         $('a#identify' + monitor.MonitorId, popupMenu)
             .click(function () {
-                identifyMonitorCallback(monitor.MonitorId);
+                redirectToMonitorIdentification();
             });
 
         return popupMenu;
@@ -185,14 +222,13 @@ function MonitorSummaryView (context) {
         clear: clear,
         blockPage: blockPage,
         unblockPage: unblockPage,
-        compileTemplates: compileTemplates,
         displayUnidentifiedMonitorWarning: displayUnidentifiedMonitorWarning,
         displayMonitor: displayMonitor,
         displayError: displayError,
         setMonitorHistoryCallback: setMonitorHistoryCallback,
         setMonitorDetailsCallback: setMonitorDetailsCallback,
         setRenameMonitorCallback: setRenameMonitorCallback,
-        setIdentifyMonitorCallback: setIdentifyMonitorCallback,
-        redirectToMonitorIdentification: redirectToMonitorIdentification
+        redirectToMonitorIdentification: redirectToMonitorIdentification,
+        displayMonitorRenameControls: displayMonitorRenameControls
     };
 };

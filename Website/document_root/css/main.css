@@ -36,7 +36,6 @@ body
 #toolbar .button
 {
     display: none;
-    cursor: pointer;
 }
 
 #toolbar .toolbarBorder
@@ -47,6 +46,12 @@ body
 div.clearFloats
 {
     clear:both;
+}
+
+.button
+{
+    cursor: pointer;
+    vertical-align: middle;
 }
 
 /* monitor styles */

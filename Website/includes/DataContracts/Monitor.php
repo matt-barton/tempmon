@@ -163,16 +163,27 @@ class Monitor
 		$prefix = $config->tablePrefix;
 		
 		return 
-			"DELETE FROM mon
-                   USING tempmon_monitor AS mon
-               LEFT JOIN tempmon_measurement AS mea
+		"DELETE FROM mon
+                   USING " . $prefix . "Monitor AS mon
+               LEFT JOIN " . $prefix . "Measurement AS mea
                       ON mon.monitorId = mea.monitorId
-               LEFT JOIN tempmon_monitoridentity AS ident
+               LEFT JOIN " . $prefix . "Monitoridentity AS ident
                       ON mon.monitorId = ident.monitorId
                    WHERE mon.monitorId = $unidentifiedMonitorId
 		             AND ident.identity IS NULL 
                      AND mea.measurementId IS NULL
                      AND mon.location IS NULL";
+	}
+	
+	public static function RenameMonitor($monitorId, $name)
+	{
+		$config = new Config();
+		$prefix = $config->tablePrefix;
+		
+		return 
+			"UPDATE " . $prefix . "Monitor
+			    SET Location = '$name'
+			  WHERE MonitorId = $monitorId";
 	}
 }
 

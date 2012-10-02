@@ -4,11 +4,9 @@ function MonitorSummaryController (dataLoader, view, displayController, toolbarV
     function init() {
         view.blockPage();
         view.init();
-        view.compileTemplates();
         view.setMonitorHistoryCallback(onMonitorHistory);
         view.setMonitorDetailsCallback(onMonitorDetails);
         view.setRenameMonitorCallback(onRenameMonitor);
-        view.setIdentifyMonitorCallback(onIdentifyMonitor);
         dataLoader.getMonitorSummary(displayMonitorSummary,
             displayMonitorSummary,
             displayError);
@@ -21,15 +19,11 @@ function MonitorSummaryController (dataLoader, view, displayController, toolbarV
 
     function onMonitorDetails(monitorId) {
         alert('Details ' + monitorId);
-
     }
 
-    function onRenameMonitor(monitorId) {
-        alert('Rename ' + monitorId);
-    }
-
-    function onIdentifyMonitor(monitorId) {
-        view.redirectToMonitorIdentification();
+    function onRenameMonitor(monitorId, name) {
+        view.blockPage();
+        dataLoader.renameMonitor(monitorId, name, refresh, displayError);
     }
 
     function refresh() {

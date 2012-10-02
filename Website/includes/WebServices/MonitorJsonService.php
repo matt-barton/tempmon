@@ -32,15 +32,22 @@ class MonitorJsonService extends JsonWebService {
 			case 'IdentifyMonitor':
 				$monitorId = $this->GetParameter('MonitorId');
 				$location = $this->GetParameter('Location');
-				$this->AddLocationToUnidentifiedMonitor($monitorId, $location);
+				$this->_monitorService->AddLocationToUnidentifedMonitor($monitorId, $location);
 				break;
 				
 			case 'UpdateMonitorWithUnidentifiedData':
 				$existingMonitorId = $this->GetParameter('ExistingMonitorId');
 				$unidentifiedMonitorId = $this->GetParameter('UnidentifiedMonitorId');
-				$this->UpdateMonitorWithUnidentifiedData($existingMonitorId, $unidentifiedMonitorId);
+				$this->_monitorService->MoveDataFromUnidentifiedMonitorToIdentifiedMonitor
+					($existingMonitorId, $unidentifiedMonitorId);
 				break;
 			
+			case 'RenameMonitor':
+				$monitorId = $this->GetParameter('MonitorId');
+				$name = $this->GetParameter('Name');
+				$this->_monitorService->RenameMonitor($monitorId, $name);
+				break;
+				
 			default:
 				die();
 				break;
@@ -59,16 +66,6 @@ class MonitorJsonService extends JsonWebService {
 		$unidentifiedMonitors = $this->_monitorService->GetUnidentifiedMonitors();
 		$identifiedMonitors = $this->_monitorService->GetIdentifiedMonitors();
 		$this->SetOutput(new UnidentifiedMonitorsViewModel($unidentifiedMonitors, $identifiedMonitors));
-	}
-	
-	private function AddLocationToUnidentifiedMonitor($monitorId, $location)
-	{
-		$this->_monitorService->AddLocationToUnidentifedMonitor($monitorId, $location);
-	}
-	
-	private function UpdateMonitorWithUnidentifiedData($existingMonitorId, $unidentifiedMonitorId)
-	{
-		$this->_monitorService->MoveDataFromUnidentifiedMonitorToIdentifiedMonitor($existingMonitorId, $unidentifiedMonitorId);
 	}
 }
 

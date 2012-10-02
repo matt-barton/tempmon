@@ -49,13 +49,31 @@ function MonitorSummaryDataLoader () {
         );
     }
 
-    function createApi() {
-    return {
-        getMonitorSummary: getMonitorSummary,
-        getMonitorHistory: getMonitorHistory,
-        getMonitorDetails: getMonitorDetails
-    };
-}
+    function renameMonitor(monitorId, name, successCallback, errorCallback) {
+        var serviceMethod = "RenameMonitor";
 
-return createApi();
+        var parameters = {
+            MonitorId: monitorId,
+            Name: name
+        };
+
+        jsonDataLoader.post(
+            servicePath + "/" + serviceMethod,
+            serviceMethod,
+            parameters,
+            successCallback,
+            errorCallback
+        );
+    }
+
+    function createApi() {
+        return {
+            getMonitorSummary: getMonitorSummary,
+            getMonitorHistory: getMonitorHistory,
+            getMonitorDetails: getMonitorDetails,
+            renameMonitor: renameMonitor
+        };
+    }
+
+    return createApi();
 };

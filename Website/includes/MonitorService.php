@@ -198,6 +198,19 @@ class MonitorService {
 		}
 	}
 	
+	public function RenameMonitor($monitorId, $name)
+	{
+		try
+		{
+			$this->db->query(Monitor::RenameMonitor($monitorId, $name));
+		}
+		catch (Exception $ex)
+		{
+			error_log (print_r($ex, true));
+			return false;
+		}			
+	}
+	
 	/* Private Methods */
 	private function IdentifyMonitor($identity, $identityType) {
 		

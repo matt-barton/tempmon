@@ -166,7 +166,27 @@
     {
     "ProjRelPath" = "T"
     }
+    "document_root\\images\\ajax-loader.gif"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\images\\back.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\images\\cancel.png"
+    {
+    "ProjRelPath" = "T"
+    }
     "document_root\\images\\menu.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\images\\refresh.png"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\images\\submit.png"
     {
     "ProjRelPath" = "T"
     }
@@ -243,6 +263,10 @@
     "ProjRelPath" = "T"
     }
     "document_root\\scripts\\MonitorSummary\\MonitorSummaryView.js"
+    {
+    "ProjRelPath" = "T"
+    }
+    "document_root\\scripts\\ToolbarView.js"
     {
     "ProjRelPath" = "T"
     }

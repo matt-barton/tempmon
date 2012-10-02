@@ -46,6 +46,17 @@
     float: none;
 }
 
+.monitorDetails
+{
+    padding-left: 10px;
+    padding-bottom: 5px;
+}
+
+.form-field
+{
+    vertical-align: middle;
+}
+
 /* popup menu styles */
 ul.popupMenu
 {
