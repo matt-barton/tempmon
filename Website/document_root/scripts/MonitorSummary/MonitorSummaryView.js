@@ -90,7 +90,7 @@ function MonitorSummaryView (context) {
             renameMonitorCallback(monitorId, nameField.val());
         }
 
-        function cancel() {
+        function renameCancel() {
             clearArea(monitorDetailsArea);
         }
 
@@ -98,13 +98,13 @@ function MonitorSummaryView (context) {
             .click(doRename);
 
         $('#renameCancelButton_' + monitorId, monitorDetailsArea)
-            .click(cancel);
+            .click(renameCancel);
 
         $('#renameForm_' + monitorId, monitorDetailsArea)
             .submit(doRename)
             .keyup(function (e) {
                 if (e.keyCode == '27') { // esc key
-                    cancel();
+                    renameCancel();
                 }
             });
 

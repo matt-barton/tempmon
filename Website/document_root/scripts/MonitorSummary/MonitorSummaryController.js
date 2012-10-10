@@ -7,6 +7,9 @@ function MonitorSummaryController (dataLoader, view, displayController, toolbarV
         view.setMonitorHistoryCallback(onMonitorHistory);
         view.setMonitorDetailsCallback(onMonitorDetails);
         view.setRenameMonitorCallback(onRenameMonitor);
+        toolbarView.setToolbarActions({
+            refresh: refresh
+        });
         dataLoader.getMonitorSummary(displayMonitorSummary,
             displayMonitorSummary,
             displayError);
@@ -41,9 +44,6 @@ function MonitorSummaryController (dataLoader, view, displayController, toolbarV
         $.each(model.Monitors, function (index, monitor) {
             setDisplayProperties(monitor);
             view.displayMonitor(monitor);
-        });
-        toolbarView.setToolbarActions({
-            refresh: refresh
         });
         view.unblockPage();
     }
