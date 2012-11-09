@@ -14,10 +14,12 @@ function MonitorSummaryView (context) {
         compileTemplates();
     }
 
-    function clear() {
-        clearArea(monitorsArea);
-        clearArea(notificationArea);
+    function clear(callback) {
+        clearArea(monitorsArea, function() {
+            clearArea(notificationArea, callback);
+        });
     }
+
 
     function blockPage() {
         context.block();
@@ -138,10 +140,13 @@ function MonitorSummaryView (context) {
         $.template('renameMonitorTemplate', $('#renameMonitorTemplate', context));
     }
 
-    function clearArea(area) {
+    function clearArea(area, onClearCompleteCallback) {
         area.hide('blind', {}, 'fast', function () {
             area.empty()
                 .show();
+            if (onClearCompleteCallback) {
+                onClearCompleteCallback();
+            }
         });
     }
 
