@@ -31,10 +31,11 @@ function MonitorSummaryController (dataLoader, view, displayController, toolbarV
 
     function refresh() {
         view.blockPage();
-        view.clear();
-        dataLoader.getMonitorSummary(displayMonitorSummary,
-            displayMonitorSummary,
-            displayError);
+        view.clear(function() {
+            dataLoader.getMonitorSummary(displayMonitorSummary,
+                displayMonitorSummary,
+                displayError);
+        });
     }
 
     function displayMonitorSummary(model) {
