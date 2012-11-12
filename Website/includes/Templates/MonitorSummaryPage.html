@@ -72,3 +72,19 @@
         <img id="renameCancelButton_${Id}" src="{{root}}/images/cancel.png" title="Cancel" class="button" />
     </form>
 </script>
+
+<script id="monitorDetailsTemplate" type="text/x-jquery-tmpl">
+    <div id="monitorDetails_${Id}">
+        <div class="detailsLeft">
+            <div class="detailTitle">Details</div>
+            <div class="detailLabel">Monitor Id: </div><div class="detailData">${Id}</div><br/>
+            <div class="detailLabel">${IdentificationType}: </div><div class="detailData">${IdentificationData}</div><br/>
+            <div class="detailLabel">First Reading: </div><div class="detailData">${FirstReading}</div><br/>
+            <div class="detailLabel">Last Reading: </div><div class="detailData">${LastReading}</div><br/>
+        </div>
+        <div class="detailsRight">
+            <img class="closeDetailButton" id="closeDetailsButton_${Id}" src="{{root}}/images/submit.png" title="OK" class="button" /><br/>
+        </div>
+        <div class="clear"</div>
+    </div>
+</script>

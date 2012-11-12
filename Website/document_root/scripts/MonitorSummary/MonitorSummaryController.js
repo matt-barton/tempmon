@@ -21,12 +21,20 @@ function MonitorSummaryController (dataLoader, view, displayController, toolbarV
     }
 
     function onMonitorDetails(monitorId) {
-        alert('Details ' + monitorId);
+        // TODO: have the view block just one monitor, not the whole page
+        //view.blockMonitor(monitorId);
+        view.blockPage();
+        dataLoader.getMonitorDetails(monitorId, displayMonitorDetails, displayError);
     }
 
     function onRenameMonitor(monitorId, name) {
         view.blockPage();
         dataLoader.renameMonitor(monitorId, name, refresh, displayError);
+    }
+
+    function displayMonitorDetails(model) {
+        view.displayMonitorDetails(model);
+        view.unblockPage();
     }
 
     function refresh() {

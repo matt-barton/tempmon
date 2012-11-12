@@ -34,16 +34,16 @@ function MonitorSummaryDataLoader () {
 
     function getMonitorDetails(monitorId, successCallback, errorCallback) {
 
-        var serviceMethod = "GetSummary";
+        var serviceMethod = "GetMonitorDetails";
 
-        if (monitorId != null) {
-            serviceMethod += "?MonitorId=" + monitorId;
-        }
+        var parameters = {
+            MonitorId: monitorId
+        };
 
         jsonDataLoader.post(
             servicePath + "/" + serviceMethod,
             serviceMethod,
-            {},
+            parameters,
             successCallback,
             errorCallback
         );

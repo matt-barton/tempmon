@@ -115,6 +115,32 @@ function MonitorSummaryView (context) {
             .focus();
     }
 
+    function displayMonitorDetails(model) {
+        var monitorDetailsArea = $('#monitorDetailsArea_' + model.MonitorId, context);
+        monitorDetailsArea.empty();
+
+        var data = {
+            Id: model.MonitorId,
+            IdentificationType: model.Identification.IdentityType,
+            IdentificationData: model.Identification.Identity,
+            FirstReading: model.FirstMeasurement.Time,
+            LastReading: model.LastMeasurement.Time
+        };
+
+        var template = $.tmpl('monitorDetailsTemplate', data)
+            .hide()
+            .appendTo(monitorDetailsArea);
+
+        function closeDetails() {
+            $('#monitorDetails_' + model.MonitorId).hide('quick');
+        }
+
+        $('#closeDetailsButton_' + model.MonitorId)
+            .click(closeDetails);
+
+        template.show('quick');
+    }
+
     function setMonitorHistoryCallback(callback) {
         monitorHistoryCallback = callback;
     }
@@ -138,6 +164,7 @@ function MonitorSummaryView (context) {
         $.template('unidentifiedMonitorMenuTemplate', $('#unidentifiedMonitorMenuTemplate', context));
         $.template('unidentifiedMonitorTemplate', $('#unidentifiedMonitorTemplate', context));
         $.template('renameMonitorTemplate', $('#renameMonitorTemplate', context));
+        $.template('monitorDetailsTemplate', $('#monitorDetailsTemplate', context));
     }
 
     function clearArea(area, onClearCompleteCallback) {
@@ -182,7 +209,7 @@ function MonitorSummaryView (context) {
 
         $('a#details' + monitor.MonitorId, popupMenu)
             .click(function () {
-                alert("View details for " + monitor.MonitorId);
+                monitorDetailsCallback(monitor.MonitorId);
             });
 
         $('a#rename' + monitor.MonitorId, popupMenu)
@@ -235,6 +262,7 @@ function MonitorSummaryView (context) {
         setMonitorDetailsCallback: setMonitorDetailsCallback,
         setRenameMonitorCallback: setRenameMonitorCallback,
         redirectToMonitorIdentification: redirectToMonitorIdentification,
-        displayMonitorRenameControls: displayMonitorRenameControls
+        displayMonitorRenameControls: displayMonitorRenameControls,
+        displayMonitorDetails: displayMonitorDetails
     };
 };

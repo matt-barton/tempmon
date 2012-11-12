@@ -9,11 +9,13 @@ CREATE TABLE tempmon_Monitor (
 
 DROP TABLE IF EXISTS tempmon_MonitorIdentity;
 CREATE TABLE tempmon_MonitorIdentity (
+	identityId InT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
 	monitorId INT(11) UNSIGNED NOT NULL,
 	identity VARCHAR(36),
 	identityType VARCHAR(4),
 
-	PRIMARY KEY (identity, identityType)
+	PRIMARY KEY (identityId),
+	UNIQUE KEY (identity, identityType)
 );
 
 

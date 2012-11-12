@@ -175,7 +175,7 @@ class Monitor
                      AND mon.location IS NULL";
 	}
 	
-	public static function RenameMonitor($monitorId, $name)
+	public static function Rename($monitorId, $name)
 	{
 		$config = new Config();
 		$prefix = $config->tablePrefix;
@@ -184,6 +184,45 @@ class Monitor
 			"UPDATE " . $prefix . "Monitor
 			    SET Location = '$name'
 			  WHERE MonitorId = $monitorId";
+	}
+
+	public static function GetDetails($monitorId)
+	{
+		$config = new Config();
+		$prefix = $config->tablePrefix;
+
+		return "SELECT mon.monitorId as id,
+		               mon.location as location,
+                       first.measurementId as firstId,
+                       first.time as firstTime,
+                       first.celsius as firstCelsius,
+                       first.farenheit as firstFarenheit,
+                       last.measurementId as lastId,
+                       last.time as lastTime,
+                       last.celsius as lastCelsius,
+                       last.farenheit as lastFarenheit,
+                       id.*
+                  FROM " . $prefix . "Monitor mon
+                  JOIN " . $prefix . "Measurement first
+                    ON mon.monitorId = first.monitorId
+                  JOIN " . $prefix . "Measurement last 
+                    ON mon.monitorId = last.monitorId
+                  JOIN " . $prefix . "MonitorIdentity id 
+                  	ON mon.monitorId = id.monitorId
+                 WHERE first.time = 
+				       (SELECT MIN(time)
+                          FROM " . $prefix . "Measurement mea
+                         WHERE mea.monitorId = mon.monitorId)
+                 AND last.time = 
+				       (SELECT MAX(time)
+                          FROM " . $prefix . "Measurement mea
+                         WHERE mea.monitorId = mon.monitorId)
+				 AND id.identityId = 
+				 	   (SELECT MAX(identityId)
+				 	   	  FROM " . $prefix . "MonitorIdentity id
+				 	   	 WHERE id.monitorId = mon.monitorId)
+			     AND mon.monitorId = " . $monitorId;
+
 	}
 }
 

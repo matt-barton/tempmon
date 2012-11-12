@@ -57,6 +57,46 @@
     vertical-align: middle;
 }
 
+.detailTitle
+{
+    font-weight: bold;
+}
+
+.detailLabel
+{
+    float: left;
+    margin-left: 20px;
+    width: 110px;
+}
+
+.detailData
+{
+    float: left;
+    font-weight: bold;
+}
+
+.detailsLeft
+{
+    float: left;
+    margin-bottom: 10px;
+}
+
+.detailsRight
+{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.closeDetailButton
+{
+    margin-top: 50px;
+}
+
+.clear
+{
+    clear: both;
+}
+
 /* popup menu styles */
 ul.popupMenu
 {

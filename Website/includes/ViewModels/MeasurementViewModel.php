@@ -22,7 +22,7 @@ class MeasurementViewModel
 		$this->Farenheit = $farenheit;	
 	}
 	
-	public function SetValuesFromMeasurement($measurement)
+	public function SetValuesFromMeasurement(Measurement $measurement)
 	{
 		$this->MeasurementId = $measurement->GetId();
 		$this->MonitorId = $measurement->GetMonitorId();

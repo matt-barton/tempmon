@@ -6,6 +6,7 @@ require_once (INCLUDES . "DatabaseService.php");
 require_once (DATA_CONTRACTS . "Monitor.php");
 require_once (DATA_CONTRACTS . "UnidentifiedMonitor.php");
 require_once (DATA_CONTRACTS . "Measurement.php");
+require_once (DATA_CONTRACTS . "MonitorIdentity.php");
 
 class MonitorService {
 	
@@ -202,7 +203,7 @@ class MonitorService {
 	{
 		try
 		{
-			$this->db->query(Monitor::RenameMonitor($monitorId, $name));
+			$this->db->query(Monitor::Rename($monitorId, $name));
 		}
 		catch (Exception $ex)
 		{
@@ -211,6 +212,59 @@ class MonitorService {
 		}			
 	}
 	
+	public function GetMonitorDetails($monitorId)
+	{
+		try
+		{
+			$this->db->Query(Monitor::GetDetails($monitorId));
+	
+			$row = $this->db->GetRow();
+
+			$firstMeasurement = 
+				new Measurement(
+					$row['firstId'], 
+					$row['monitorId'], 
+					$row['firstTime'], 
+					$row['firstCelsius'], 
+					$row['firstFarenheit']
+				);
+
+			$lastMeasurement = 
+				new Measurement(
+					$row['lastId'], 
+					$row['monitorId'], 
+					$row['lastTime'], 
+					$row['lastCelsius'], 
+					$row['lastFarenheit']
+				);
+
+			$measurements = array ($firstMeasurement, $lastMeasurement);
+
+			$identities = array (
+				new MonitorIdentity(
+					$row['identityId'],
+					$row['monitorId'],
+					$row['identity'],
+					$row['identityType']
+				)
+			);
+
+			return 
+				new Monitor(
+					$row['id'],
+					$row['location'],
+					$measurements,
+					$identities
+				);
+		}
+		catch (Exception $ex)
+		{
+			error_log (print_r($ex, true));
+			return false;
+		}
+	}
+
+
 	/* Private Methods */
 	private function IdentifyMonitor($identity, $identityType) {
 		
