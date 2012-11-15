@@ -265,6 +265,58 @@ class MonitorService {
 	}
 
 
+	public function GetHistory($monitorId, $start = null, $end = null)
+	{
+		try
+		{
+			$this->db->Query(Monitor::GetHistory($monitorId, $start, $end));
+	
+			$monitorId = null;
+			$monitorLocation = null;
+			$monitorIdentity = null;
+			$measurements = Array();
+					
+			while ($row = $this->db->GetRow())
+			{
+				$measurements[] = 
+					new Measurement(
+						$row['measurementId'], 
+						$row['monitorId'], 
+						$row['time'], 
+						$row['celsius'], 
+						$row['farenheit']
+					);
+
+				if ($monitorId == null)
+				{
+
+					$monitorId = $row['id'];
+					$monitorLocation = $row['location'];
+					$monitorIdentity =
+						new MonitorIdentity(
+							$row['identityId'],
+							$row['monitorId'],
+							$row['identity'],
+							$row['identityType']
+						);
+				}
+			}
+
+			return 
+				new Monitor(
+					$monitorId,
+					$monitorLocation,
+					$measurements,
+					$monitorIdentity
+				);
+		}
+		catch (Exception $ex)
+		{
+			error_log (print_r($ex, true));
+			return false;
+		}
+	}
+
 	/* Private Methods */
 	private function IdentifyMonitor($identity, $identityType) {
 		

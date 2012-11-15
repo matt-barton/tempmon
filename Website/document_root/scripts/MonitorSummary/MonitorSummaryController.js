@@ -16,8 +16,16 @@ function MonitorSummaryController (dataLoader, view, displayController, toolbarV
     }
 
     /* Private Methods */
-    function onMonitorHistory(monitorId) {
-        alert('History ' + monitorId);
+    function onMonitorHistory(monitorId, range) {
+        // TODO: have the view block just one monitor, not the whole page
+        //view.blockMonitor(monitorId);
+        view.blockPage();
+        dataLoader.getMonitorHistory(monitorId, range, displayMonitorHistory, displayError);
+    }
+
+    function displayMonitorHistory(model) {
+        view.displayMonitorHistory(model);
+        view.unblockPage();
     }
 
     function onMonitorDetails(monitorId) {

@@ -17,7 +17,6 @@ require_once (INCLUDES . 'String.php');
 require_once (EXCEPTIONS . 'SystemException.php');
 
 /* Configuration class */
-
 class Config {
 	
 	public $dbHost = "";
@@ -25,6 +24,13 @@ class Config {
 	public $dbPassword = "";
 	public $dbDatabase = "";	
 	public $tablePrefix = "tempmon_";
+	public $templateDefaults = array (
+		'root' => '',
+		'siteTitle' => 'tempmon'	
+	);
 }
+
+/* Configuration Settings */
+date_default_timezone_set("Europe/London");
 
 ?>

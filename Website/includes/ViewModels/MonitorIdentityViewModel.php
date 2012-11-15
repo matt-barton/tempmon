@@ -5,10 +5,13 @@ class MonitorIdentityViewModel
 	public $Identity;
 	public $IdentityType;
 	
-	public function __construct(MonitorIdentity $identity)
+	public function __construct(MonitorIdentity $identity = null)
 	{
-		$this->Identity = $identity->GetIdentity();
-		$this->IdentityType = $identity->GetType();
+		if ($identity != null)
+		{
+			$this->Identity = $identity->GetIdentity();
+			$this->IdentityType = $identity->GetType();
+		}
 	}
 }
 

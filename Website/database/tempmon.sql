@@ -27,5 +27,7 @@ CREATE TABLE tempmon_Measurement (
 	celsius DECIMAL (4, 2),
 	farenheit DECIMAL (5,2),
 	
-	PRIMARY KEY (MeasurementId)
+	PRIMARY KEY (MeasurementId),
+	INDEX (time),
+	INDEX (monitorId, time)
 );

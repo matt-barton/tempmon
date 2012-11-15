@@ -42,7 +42,7 @@
 
 <script id="monitorMenuTemplate", type="text/x-jquery-tmpl">
     <ul class="popupMenu">
-        <li><a href="#" id="history${id}">History ${id}</a></li>
+        <li><a href="#" id="history${id}">History</a></li>
         <li><a href="#" id="details${id}">Details</a></li>
         <li><a href="#" id="rename${id}">Rename</a></li>
     </ul>
@@ -50,7 +50,7 @@
 
 <script id="unidentifiedMonitorMenuTemplate", type="text/x-jquery-tmpl">
     <ul class="popupMenu">
-        <li><a href="#" id="history${id}">History ${id}</a></li>
+        <li><a href="#" id="history${id}">History</a></li>
         <li><a href="#" id="details${id}">Details</a></li>
         <li><a href="#" id="identify${id}">Identify</a></li>
     </ul>
@@ -86,5 +86,18 @@
             <img class="closeDetailButton" id="closeDetailsButton_${Id}" src="{{root}}/images/submit.png" title="OK" class="button" /><br/>
         </div>
         <div class="clear"</div>
+    </div>
+</script>
+
+<script id="monitorHistoryTemplate" type="text/x-jquery-tmpl">
+    <div id="monitorHistory_${Id}">
+        <div class="graphRangeOptions">
+            <a href="#" class="graphTypeLink 1d">24h</a>
+            <a href="#" class="graphTypeLink 1w">1w</a>
+            <a href="#" class="graphTypeLink 1m">1m</a>
+        </div>
+        <div class="clear"></div>
+        <div class="monitorHistoryGraph" id="graph_${Id}"></div>
+        <img class="closeHistoryButton" id="closeHistoryButton_${Id}" src="{{root}}/images/submit.png" title="OK" class="button" />
     </div>
 </script>

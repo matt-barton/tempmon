@@ -97,6 +97,32 @@
     clear: both;
 }
 
+.graphRangeOptions {
+    width: 100%;
+    text-align: center;
+}
+
+.graphRangeOptions a {
+    float: left;
+    margin-right: 5px;
+}
+
+.graphRangeOptions a.selected {
+    text-decoration: none;
+    color: black;
+    cursor: default;
+}
+
+.graphRangeOptions a.unselected {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}
+
+.closeHistoryButton {
+    margin-top: 10px;
+    margin-left: 10px;
+}
 /* popup menu styles */
 ul.popupMenu
 {

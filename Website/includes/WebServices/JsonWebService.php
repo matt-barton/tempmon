@@ -15,9 +15,30 @@ class JsonWebService {
 	}
 
 	/* Public Methods */
-	public function GetParameter($name) {
-		return isset($this->_parameters[$name]) ? 
-			$this->_parameters[$name] : null;
+	public function GetParameter($name, $required = false, $default = null) {
+
+		if (isset($this->_parameters[$name]))
+		{
+			return $this->_parameters[$name];
+		}
+		else
+		{
+			if ($required)
+			{
+				die();
+			}
+			else
+			{
+				if ($default != null)
+				{
+					return $default;
+				}
+				else
+				{
+					return null;
+				}
+			}
+		}
 	}
 	
 	public function SetOutput ($output) {

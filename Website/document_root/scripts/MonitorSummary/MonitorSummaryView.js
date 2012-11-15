@@ -141,6 +141,79 @@ function MonitorSummaryView (context) {
         template.show('quick');
     }
 
+    function displayMonitorHistory(model) {
+        var monitorDetailsArea = $('#monitorDetailsArea_' + model.MonitorId, context);
+        monitorDetailsArea.empty();
+
+        var data = {
+            Id: model.MonitorId
+        };
+
+        var template = $.tmpl('monitorHistoryTemplate', data)
+            .appendTo(monitorDetailsArea);
+
+        setupGraphLinks($('.graphTypeLink', template), model.Range, model.MonitorId);
+
+        var graphPoints = GraphHelper.GetGraphPoints(model.Measurements);
+
+        function closeDetails() {
+            $('#monitorHistory_' + model.MonitorId).hide('quick');
+        }
+
+        $('#closeHistoryButton_' + model.MonitorId)
+            .click(closeDetails);
+
+        $.jqplot('graph_' + model.MonitorId, graphPoints, {
+            axes: {
+                xaxis: {
+                    renderer: $.jqplot.DateAxisRenderer,
+                    rendererOptions: {
+                        tickRenderer: $.jqplot.CanvasAxisTickRenderer
+                    },
+                    tickOptions: {
+                        angle: -90,
+                        fontSize: '10pt'
+                    }
+                },
+                yaxis:{
+                    rendererOptions: {
+                        tickRenderer:$.jqplot.CanvasAxisTickRenderer
+                    },
+                    tickOptions: {
+                        fontSize:'10pt', 
+                        fontFamily:'Tahoma'
+                    }
+                }
+            }
+        });
+
+        template.show('quick');
+    }
+
+    function setupGraphLinks (links, currentRange, monitorId) {
+
+        var ranges = ['1d', '1w', '1m'];
+
+        $.each(links, function(index, link) {
+            $.each(ranges, function(idx, range) {
+                if ($(link).hasClass(range)) {
+                    $(link).data('range', range);
+                    if (currentRange == range) {
+                        $(link)
+                            .addClass('selected')
+                            .data('selected', true);
+                    }
+                }
+            });
+        });
+
+        $(links).click(function() {
+            if (!$(this).data('selected')) {
+                monitorHistoryCallback(monitorId, $(this).data('range'));
+            }
+        });
+    }
+
     function setMonitorHistoryCallback(callback) {
         monitorHistoryCallback = callback;
     }
@@ -165,6 +238,7 @@ function MonitorSummaryView (context) {
         $.template('unidentifiedMonitorTemplate', $('#unidentifiedMonitorTemplate', context));
         $.template('renameMonitorTemplate', $('#renameMonitorTemplate', context));
         $.template('monitorDetailsTemplate', $('#monitorDetailsTemplate', context));
+        $.template('monitorHistoryTemplate', $('#monitorHistoryTemplate', context));
     }
 
     function clearArea(area, onClearCompleteCallback) {
@@ -204,7 +278,7 @@ function MonitorSummaryView (context) {
         // assign click events to menu items
         $('a#history' + monitor.MonitorId, popupMenu)
             .click(function () {
-                alert("View history for " + monitor.MonitorId);
+                monitorHistoryCallback(monitor.MonitorId);
             });
 
         $('a#details' + monitor.MonitorId, popupMenu)
@@ -263,6 +337,7 @@ function MonitorSummaryView (context) {
         setRenameMonitorCallback: setRenameMonitorCallback,
         redirectToMonitorIdentification: redirectToMonitorIdentification,
         displayMonitorRenameControls: displayMonitorRenameControls,
-        displayMonitorDetails: displayMonitorDetails
+        displayMonitorDetails: displayMonitorDetails,
+        displayMonitorHistory: displayMonitorHistory
     };
 };

@@ -15,18 +15,19 @@ function MonitorSummaryDataLoader () {
         );
     }
 
-    function getMonitorHistory(monitorId, successCallback, errorCallback) {
+    function getMonitorHistory(monitorId, range, successCallback, errorCallback) {
 
         var serviceMethod = "GetHistory";
 
-        if (monitorId != null) {
-            serviceMethod += "?MonitorId=" + monitorId;
-        }
+        var parameters = {
+            MonitorId: monitorId,
+            Range: range
+        };
 
         jsonDataLoader.post(
             servicePath + "/" + serviceMethod,
             serviceMethod,
-            {},
+            parameters,
             successCallback,
             errorCallback
         );

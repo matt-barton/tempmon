@@ -35,7 +35,15 @@ class Monitor
 		$this->_id = $id;
 		$this->_location = $location;
 		$this->_measurements = $measurements;
-		$this->_identities = $identities;
+		if (is_array($identities))
+		{
+			$this->_identities = $identities;
+		}
+		else
+		{
+			$this->_identities = array();
+			$this->_identities[] = $identities;
+		}
 	}
 	
 	/* SQL Definitions */
@@ -224,6 +232,42 @@ class Monitor
 			     AND mon.monitorId = " . $monitorId;
 
 	}
+
+	public static function GetHistory($monitorId, $start, $end)
+	{
+		$config = new Config();
+		$prefix = $config->tablePrefix;
+
+		$sql = "SELECT mon.monitorId as id,
+		               mon.location,
+                       id.*,
+                       mea.*
+                  FROM " . $prefix . "Monitor mon
+             LEFT JOIN " . $prefix . "Measurement mea
+                    ON mon.monitorId = mea.monitorId";
+
+		if ($start != null)
+		{
+			$sql .= " AND mea.time >= '" . $start->format('Y-m-d H:i:s') . "'";
+		}
+
+		if ($end != null)
+		{
+			$sql .= " AND mea.time <= '" . $end->format('Y-m-d H:i:s') . "'";
+		}
+
+        $sql .= " JOIN " . $prefix . "MonitorIdentity id 
+                  	ON mon.monitorId = id.monitorId
+                 WHERE id.identityId = 
+				 	   (SELECT MAX(identityId)
+				 	   	  FROM " . $prefix . "MonitorIdentity id
+				 	   	 WHERE id.monitorId = mon.monitorId)
+			     AND mon.monitorId = $monitorId
+	        ORDER BY mea.time";
+
+		return $sql;
+	}
+
 }
 
 ?>
